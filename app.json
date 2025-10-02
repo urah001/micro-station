@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "micro-ecommerce-site",
-    "slug": "micro-ecommerce-site",
+    "name": "micro-station",
+    "slug": "micro-station",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
