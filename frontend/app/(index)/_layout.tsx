@@ -1,6 +1,6 @@
 import React from "react";
 import { useNetworkState } from "expo-network";
-import { Redirect, router, Stack } from "expo-router";
+import { Stack } from "expo-router";
 import { Alert } from "react-native";
 import { Button } from "@/components/Button";
 import { WidgetProvider } from "@/contexts/WidgetContext";
