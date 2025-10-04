@@ -41,14 +41,11 @@ export default function AppIndexLayout() {
                 headerLargeTitleShadowVisible: false,
                 headerShadowVisible: true,
                 headerLargeStyle: {
-                  // NEW: Make the large title transparent to match the background.
                   backgroundColor: "transparent",
                 },
               }),
         }}
-      >
-        {/* Modal Demo Screens - These are configured in their individual screen files */}
-      </Stack>
+      ></Stack>
     </WidgetProvider>
   );
 }
