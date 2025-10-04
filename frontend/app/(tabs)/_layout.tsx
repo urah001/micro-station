@@ -1,4 +1,3 @@
-import React from "react";
 import { Tabs } from "expo-router";
 import { IconSymbol } from "@/components/IconSymbol";
 import { colors } from "@/styles/commonStyles";
@@ -22,7 +21,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="index"
         options={{
-          title: "Shop",
+          title: "Micro Station",
           tabBarIcon: ({ color }) => (
             <IconSymbol name="storefront" color={color} />
           ),
