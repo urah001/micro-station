@@ -70,7 +70,7 @@ export default function ShopScreen() {
         <Text style={styles.productName} numberOfLines={2}>
           {product.name}
         </Text>
-        <Text style={styles.productPrice}>${product.price.toFixed(2)}</Text>
+        <Text style={styles.productPrice}>₦{product.price.toFixed(2)}</Text>
         <Text style={styles.productStock}>
           {product.stock > 0 ? `${product.stock} in stock` : "Out of stock"}
         </Text>

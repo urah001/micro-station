@@ -1,3 +1,4 @@
+//this is the params page for each product details
 import React, { useState } from "react";
 import {
   View,
