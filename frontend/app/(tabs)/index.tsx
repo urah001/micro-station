@@ -95,17 +95,19 @@ export default function ShopScreen() {
     </View>
   );
 
+  // this return statement renders the main shop screen with search, categories, and product grid the nav bar at the bottom isnt here
   return (
     <View style={commonStyles.wrapper}>
       <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
         {/* Header */}
         <View style={styles.header}>
-          <Text style={styles.title}>Shop</Text>
+          <Text style={styles.title}>Micro Station</Text>
           {!isAuthenticated && (
             <Pressable
               onPress={() => router.push("/auth")}
               style={styles.loginButton}
             >
+              {/* the top left login in the home page */}
               <Text style={styles.loginText}>Login</Text>
             </Pressable>
           )}
@@ -116,7 +118,7 @@ export default function ShopScreen() {
           <IconSymbol name="magnifyingglass" color={colors.grey} size={20} />
           <TextInput
             style={styles.searchInput}
-            placeholder="Search products..."
+            placeholder="Search for products..."
             value={searchText}
             onChangeText={handleSearch}
             placeholderTextColor={colors.grey}
@@ -136,6 +138,7 @@ export default function ShopScreen() {
               !filters.category && styles.categoryButtonActive,
             ]}
           >
+            {/* list all the categories in a horinzontal way */}
             <Text
               style={[
                 styles.categoryText,
