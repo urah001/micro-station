@@ -153,6 +153,19 @@ export const mockProducts: Product[] = [
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString(),
   },
+  {
+    id: "9",
+    name: "HP EliteBook 8460w",
+    description:
+      "Powerful portable laptop with Intel Core i5 processor using the 3rd Generation and 8GB RAM",
+    price: 150000,
+    image:
+      "https://images.unsplash.com/photo-1691085475426-d9636c7010b3?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    category: "electronics",
+    stock: 0,
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString(),
+  },
 ];
 
 export const mockOrders: Order[] = [];
