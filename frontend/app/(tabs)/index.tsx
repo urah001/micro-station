@@ -123,7 +123,7 @@ export default function ShopScreen() {
           />
         </View>
 
-        {/*Top Categories */}
+        {/*Top horinzontal scrollable Categories */}
         <ScrollView
           horizontal
           showsHorizontalScrollIndicator={false}
