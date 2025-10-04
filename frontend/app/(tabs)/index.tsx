@@ -111,7 +111,7 @@ export default function ShopScreen() {
           )}
         </View>
 
-        {/* Search */}
+        {/* Search icon and input */}
         <View style={styles.searchContainer}>
           <IconSymbol name="magnifyingglass" color={colors.grey} size={20} />
           <TextInput
@@ -123,7 +123,7 @@ export default function ShopScreen() {
           />
         </View>
 
-        {/* Categories */}
+        {/*Top Categories */}
         <ScrollView
           horizontal
           showsHorizontalScrollIndicator={false}
