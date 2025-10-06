@@ -99,7 +99,6 @@ export default function AuthScreen() {
               />
             </View>
           )}
-
           <View style={styles.inputContainer}>
             <Text style={styles.label}>Email</Text>
             <TextInput
@@ -113,7 +112,7 @@ export default function AuthScreen() {
               autoCorrect={false}
             />
           </View>
-
+          ..
           <View style={styles.inputContainer}>
             <Text style={styles.label}>Password</Text>
             <TextInput
@@ -126,7 +125,6 @@ export default function AuthScreen() {
               autoCapitalize="none"
             />
           </View>
-
           {!isLogin && (
             <View style={styles.inputContainer}>
               <Text style={styles.label}>Confirm Password</Text>
@@ -141,7 +139,6 @@ export default function AuthScreen() {
               />
             </View>
           )}
-
           <Button
             onPress={handleSubmit}
             loading={isLoading}
@@ -149,7 +146,6 @@ export default function AuthScreen() {
           >
             {isLogin ? "Sign In" : "Create Account"}
           </Button>
-
           <Button
             onPress={() => setIsLogin(!isLogin)}
             variant="outline"
