@@ -24,9 +24,9 @@ export default function AppIndexLayout() {
     }
   }, [networkState.isConnected, networkState.isInternetReachable]);
 
-  //   if (!user) {
-  //     return <Redirect href="/(auth)" />;
-  //   }
+  // if (!user) {
+  //   return <Redirect href="/(auth)" />;
+  // }
 
   return (
     <WidgetProvider>
