@@ -47,7 +47,7 @@ export default function RootLayout() {
                 <Stack.Screen name="checkout" options={{ title: "Checkout" }} />
                 <Stack.Screen name="admin" options={{ headerShown: false }} />
               </Stack>
-              <StatusBar style="auto" />
+              {/* <StatusBar style="auto" /> */}
             </ThemeProvider>
           </CartProvider>
         </ProductProvider>
