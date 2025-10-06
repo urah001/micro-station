@@ -212,29 +212,28 @@ GET /api/products/2
 
 ---
 
-## 3. Technology Stack
+## 3. Tech Stack
 
-| Technology     | Purpose                                       |
-| -------------- | --------------------------------------------- |
-| **Node.js**    | JavaScript runtime environment for the server |
-| **Express.js** | Framework for building RESTful APIs           |
-| **PostgreSQL** | Database for storing user and product data    |
-| **Prisma ORM** | Database modeling and query tool              |
-| **dotenv**     | Loads environment variables from `.env` file  |
-| **CORS**       | Enables secure cross-origin requests          |
+| Technology       | Purpose                                       |
+| ---------------- | --------------------------------------------- |
+| **Node.js**      | JavaScript runtime environment for the server |
+| **Express.js**   | Framework for building RESTful APIs           |
+| **PostgreSQL**   | Database for storing user and product data    |
+| **Prisma ORM**   | Database modeling and query tool              |
+| **dotenv**       | Loads environment variables from `.env` file  |
+| **CORS**         | Enables secure cross-origin requests          |
+| **REACT NATIVE** | for the frontend and visual part              |
 
 ---
 
 ## 4. Known Limitations
 
 - The project currently uses **basic authentication** (JWT can be added later for better security).
-- There’s **no frontend UI**, so you’ll need to use **Postman** or any API testing tool.
-- The project assumes your PostgreSQL runs locally at port `5432`.
-  If yours runs on a different port, update the `.env` file accordingly.
+- the project was not connected to the frontend UI so you would have to run the frontend and backend individually to see them
 
 ---
 
-## 5. Testing Tips
+## 5. Testing
 
 - To view your database visually, run:
 
@@ -247,16 +246,3 @@ GET /api/products/2
 - You can use Postman to test all the routes listed above.
 
 ---
-
-## 6. Summary
-
-This backend project provides a foundation for an e-commerce API where:
-
-- Users can register and log in.
-- Products can be created and fetched from the database.
-
-It’s built to be simple, lightweight, and easy to extend into a full-stack application.
-
----
-
-Would you like me to format this README so it looks _nicer with emojis, sections, and GitHub-friendly badges_ (still simple but eye-catching)?
