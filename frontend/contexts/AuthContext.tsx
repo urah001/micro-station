@@ -1,6 +1,5 @@
-import React, { createContext, useContext, useReducer, useEffect } from "react";
+import React, { createContext, useContext, useReducer } from "react";
 import { AuthState, User } from "../types";
-import { mockUsers } from "@/data/mockData";
 
 interface AuthContextType extends AuthState {
   login: (email: string, password: string) => Promise<boolean>;
@@ -23,23 +22,10 @@ const authReducer = (state: AuthState, action: AuthAction): AuthState => {
       return { ...state, isLoading: true };
     case "LOGIN_SUCCESS":
     case "REGISTER_SUCCESS":
-      return {
-        user: action.payload,
-        isAuthenticated: true,
-        isLoading: false,
-      };
+      return { user: action.payload, isAuthenticated: true, isLoading: false };
     case "LOGIN_FAILURE":
-      return {
-        user: null,
-        isAuthenticated: false,
-        isLoading: false,
-      };
     case "LOGOUT":
-      return {
-        user: null,
-        isAuthenticated: false,
-        isLoading: false,
-      };
+      return { user: null, isAuthenticated: false, isLoading: false };
     default:
       return state;
   }
@@ -56,18 +42,24 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
 }) => {
   const [state, dispatch] = useReducer(authReducer, initialState);
 
+  const API_URL = "http://localhost:5000/api/auth";
+
   const login = async (email: string, password: string): Promise<boolean> => {
-    console.log("Attempting login for:", email);
     dispatch({ type: "LOGIN_START" });
+    try {
+      const response = await fetch(`${API_URL}/login`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
+      });
 
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+      if (!response.ok) throw new Error("Login failed");
 
-    const user = mockUsers.find((u) => u.email === email);
-    if (user && password === "password") {
-      dispatch({ type: "LOGIN_SUCCESS", payload: user });
+      const data = await response.json();
+      dispatch({ type: "LOGIN_SUCCESS", payload: data });
       return true;
-    } else {
+    } catch (error) {
+      console.error("Login error:", error);
       dispatch({ type: "LOGIN_FAILURE" });
       return false;
     }
@@ -78,33 +70,27 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
     password: string,
     name: string
   ): Promise<boolean> => {
-    console.log("Attempting registration for:", email);
     dispatch({ type: "LOGIN_START" });
+    try {
+      const response = await fetch(`${API_URL}/register`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, password }),
+      });
 
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+      if (!response.ok) throw new Error("Registration failed");
 
-    const existingUser = mockUsers.find((u) => u.email === email);
-    if (existingUser) {
+      const data = await response.json();
+      dispatch({ type: "REGISTER_SUCCESS", payload: data });
+      return true;
+    } catch (error) {
+      console.error("Registration error:", error);
       dispatch({ type: "LOGIN_FAILURE" });
       return false;
     }
-
-    const newUser: User = {
-      id: Date.now().toString(),
-      email,
-      name,
-      isAdmin: false,
-      createdAt: new Date().toISOString(),
-    };
-
-    mockUsers.push(newUser);
-    dispatch({ type: "REGISTER_SUCCESS", payload: newUser });
-    return true;
   };
 
   const logout = () => {
-    console.log("User logged out");
     dispatch({ type: "LOGOUT" });
   };
 
