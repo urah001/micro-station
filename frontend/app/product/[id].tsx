@@ -1,3 +1,4 @@
+//this is the params page for each product details
 import React, { useState } from "react";
 import {
   View,
@@ -27,6 +28,7 @@ export default function ProductDetailScreen() {
 
   const product = getProduct(id!);
 
+  // to handle the search not found
   if (!product) {
     return (
       <View style={[commonStyles.container, styles.errorContainer]}>
@@ -92,7 +94,7 @@ export default function ProductDetailScreen() {
         {/* Product Info */}
         <View style={styles.productInfo}>
           <Text style={styles.productName}>{product.name}</Text>
-          <Text style={styles.productPrice}>${product.price.toFixed(2)}</Text>
+          <Text style={styles.productPrice}>₦{product.price.toFixed(2)}</Text>
 
           <View style={styles.stockContainer}>
             <IconSymbol
@@ -151,7 +153,7 @@ export default function ProductDetailScreen() {
         <View style={styles.totalContainer}>
           <Text style={styles.totalLabel}>Total:</Text>
           <Text style={styles.totalValue}>
-            ${(product.price * quantity).toFixed(2)}
+            {(product.price * quantity).toFixed(2)}
           </Text>
         </View>
 
@@ -160,7 +162,7 @@ export default function ProductDetailScreen() {
           disabled={product.stock === 0}
           style={styles.addToCartButton}
         >
-          {product.stock === 0 ? "Out of Stock" : "Add to Cart"}
+          ₦{product.stock === 0 ? "Out of Stock" : "Add to Cart"}
         </Button>
       </View>
     </View>
