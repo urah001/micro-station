@@ -1,6 +1,6 @@
 # Micro-Station Backend (E-Commerce API)
 
-This is a simple backend API built with **Node.js**, **Express**, and **Prisma ORM** that connects to a **PostgreSQL** database.
+This is an APP and API built with **Node.js**, **Express**, and **Prisma ORM** that connects to a **PostgreSQL** database **REACT NATIVE**.
 It supposed to handles **user authentication** and **product management** features.
 but the time given was to small to complete the project 100%.
 
