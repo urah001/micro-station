@@ -1,248 +1,202 @@
-# Micro-Station Backend (E-Commerce API)
+# Micro-Station
 
-This is an APP and API built with **Node.js**, **Express**, and **Prisma ORM** that connects to a **PostgreSQL** database **REACT NATIVE**.
-It supposed to handles **user authentication** and **product management** features.
-but the time given was to small to complete the project 100%.
-
---
-
-## 1. Setup and Run Instructions
-
-### Prerequisites
-
-Before running the project, user/tester should make sure to have installed:
-
-- [Node.js](https://nodejs.org/) (v18 or above)
-- [PostgreSQL](https://www.postgresql.org/download/) database
-- [npm](https://www.npmjs.com/) or [pnpm](https://pnpm.io/) package manager
+This project is a simple e-commerce API built with **Node.js**, **Express.js**, **Prisma ORM**, and **PostgreSQL**.
+It was developed as part of an assessment to demonstrate backend API creation, database interaction, and user management.
+The frontend (built with React Native) and backend were developed separately due to time constraints.
 
 ---
 
-### Steps to Run
+## Technology Stack Used
 
-1. **Clone the project**
-
-   ```bash
-   git clone https://github.com/urah001/micro-station.git
-   cd micro-station/backend
-   ```
-
-2. **Install dependencies**
-
-   ```bash
-   npm install
-   ```
-
-   or
-
-   ```bash
-   pnpm install
-   ```
-
-3. **Set up environment variables**
-   Create a `.env` file in the root of your backend folder and add:
-
-   ```env
-   DATABASE_URL="postgresql://postgres:yourPassword@localhost:5432/microstation"
-   PORT=5000
-   ```
-
-4. **Start your PostgreSQL server**
-
-   ```bash
-   sudo service postgresql start
-   ```
-
-5. **Run Prisma migrations and generate client**
-
-   ```bash
-   npx prisma migrate dev --name init
-   npx prisma generate
-   ```
-
-6. **Start the server**
-
-   ```bash
-   npm run dev
-   ```
-
-   or
-
-   ```bash
-   node src/server.js
-   ```
-
-7. Once running, open your browser or Postman and go to:
-
-   ```
-   http://localhost:5000
-   ```
+- **React Native** – for building the mobile application interface
+- **Node.js** – Used for building the backend server.
+- **Express.js** – Used for setting up routes and handling requests.
+- **Prisma ORM** – Used to connect and interact with the PostgreSQL database.
+- **PostgreSQL** – The main database used for storing user and product information.
+- **dotenv** – For managing environment variables securely.
+- **Nodemon** – To automatically restart the server during development.
 
 ---
 
-## 🔗 2. API Endpoints and Example Requests
+## Setup and Run Instructions
 
-### Auth Routes (`/api/auth`)
+Follow the steps below to set up and run the backend project:
 
-#### 1️ Register User
+### Step 1: Clone the repository
+
+```bash
+git clone https://github.com/urah001/micro-station.git
+cd micro-station
+```
+
+### Step 2: Install dependencies
+
+```bash
+npm install
+```
+
+### Step 3: Set up environment variables
+
+Create a `.env` file in the project root and add the following details:
+
+```
+DATABASE_URL="postgresql://USER:PASSWORD@localhost:5432/micro_station"
+PORT=5000
+```
+
+Replace `USER` and `PASSWORD` with your PostgreSQL details.
+
+### Step 4: Initialize the database
+
+Run the Prisma commands below:
+
+```bash
+npx prisma migrate dev --name init
+npx prisma generate
+```
+
+### Step 5: Start the server
+
+```bash
+node src/server.js
+```
+
+Once the server starts successfully, it will be available at:
+
+```
+http://localhost:5000
+```
+
+---
+
+## API Endpoints
+
+The backend exposes several API endpoints to handle authentication and product management.
+
+### Authentication Routes
+
+#### Register a new user
 
 **POST** `/api/auth/register`
 
-**Request Example (JSON):**
+Example request:
 
-```json
-{
-  "name": "John Doe",
-  "email": "john@example.com",
-  "password": "mypassword123"
-}
+```bash
+curl -X POST http://localhost:5000/api/auth/register \
+-H "Content-Type: application/json" \
+-d '{"username": "testuser", "email": "test@example.com", "password": "password123"}'
 ```
 
-**Response Example:**
+Example response:
 
 ```json
 {
   "message": "User registered successfully",
   "user": {
     "id": 1,
-    "email": "john@example.com"
+    "username": "testuser",
+    "email": "test@example.com"
   }
 }
 ```
 
 ---
 
-#### 2️Login User
+#### Login a user
 
 **POST** `/api/auth/login`
 
-**Request Example (JSON):**
+Example request:
 
-```json
-{
-  "email": "john@example.com",
-  "password": "mypassword123"
-}
+```bash
+curl -X POST http://localhost:5000/api/auth/login \
+-H "Content-Type: application/json" \
+-d '{"email": "test@example.com", "password": "password123"}'
 ```
 
-**Response Example:**
+Example response:
 
 ```json
 {
   "message": "Login successful",
-  "token": "eyJhbGciOiJIUzI1NiIs..."
+  "user": {
+    "id": 1,
+    "username": "testuser",
+    "email": "test@example.com"
+  }
 }
 ```
 
 ---
 
-### Product Routes (`/api/products`)
+### Product Routes
 
-#### 3️ Get All Products
+#### Get all products
 
 **GET** `/api/products`
 
-**Response Example:**
+Example request:
+
+```bash
+curl http://localhost:5000/api/products
+```
+
+Example response:
 
 ```json
 [
   {
     "id": 1,
-    "name": "iPhone 15",
-    "price": 999.99,
-    "description": "Latest Apple smartphone",
-    "category": "Electronics"
+    "name": "Wireless Headphones",
+    "price": 5000
+  },
+  {
+    "id": 2,
+    "name": "Smart Watch",
+    "price": 8000
   }
 ]
 ```
 
 ---
 
-#### 4️ Add a New Product
+#### Add a new product
 
 **POST** `/api/products`
 
-**Request Example (JSON):**
+Example request:
 
-```json
-{
-  "name": "Samsung TV",
-  "price": 450,
-  "description": "42 inch Smart TV",
-  "category": "Electronics"
-}
+```bash
+curl -X POST http://localhost:5000/api/products \
+-H "Content-Type: application/json" \
+-d '{"name": "Laptop", "price": 150000}'
 ```
 
-**Response Example:**
+Example response:
 
 ```json
 {
-  "message": "Product added successfully",
+  "message": "Product created successfully",
   "product": {
-    "id": 2,
-    "name": "Samsung TV",
-    "price": 450
+    "id": 3,
+    "name": "Laptop",
+    "price": 150000
   }
 }
 ```
 
 ---
 
-#### 5️ Get a Single Product
+## Known Limitations
 
-**GET** `/api/products/:id`
-
-Example:
-
-```
-GET /api/products/2
-```
-
-**Response Example:**
-
-```json
-{
-  "id": 2,
-  "name": "Samsung TV",
-  "price": 450,
-  "description": "42 inch Smart TV",
-  "category": "Electronics"
-}
-```
+- The frontend (React Native) and backend (Node.js) were not connected due to limited time.
+- The project was completed within one week.
+- An admin page was not created.
+- Some advanced validation and authentication features were not fully implemented.
 
 ---
 
-## 3. Tech Stack
+## Summary
 
-| Technology       | Purpose                                       |
-| ---------------- | --------------------------------------------- |
-| **Node.js**      | JavaScript runtime environment for the server |
-| **Express.js**   | Framework for building RESTful APIs           |
-| **PostgreSQL**   | Database for storing user and product data    |
-| **Prisma ORM**   | Database modeling and query tool              |
-| **dotenv**       | Loads environment variables from `.env` file  |
-| **CORS**         | Enables secure cross-origin requests          |
-| **REACT NATIVE** | for the frontend and visual part              |
-
----
-
-## 4. Known Limitations
-
-- The project currently uses **basic authentication** (JWT can be added later for better security).
-- the project was not connected to the frontend UI so you would have to run the frontend and backend individually to see them
-
----
-
-## 5. Testing
-
-- To view your database visually, run:
-
-  ```bash
-  npx prisma studio
-  ```
-
-  It will open Prisma Studio in your browser to manage your tables.
-
-- You can use Postman to test all the routes listed above.
-
----
+The Micro-Station project demonstrates the use of Express.js with Prisma ORM for creating a backend API connected to a PostgreSQL database.
+It supports basic user registration, login, and product management features, with room for future improvements such as admin controls, frontend integration, and authentication tokens.
