@@ -4,7 +4,7 @@ This is an APP and API built with **Node.js**, **Express**, and **Prisma ORM** t
 It supposed to handles **user authentication** and **product management** features.
 but the time given was to small to complete the project 100%.
 
----
+--
 
 ## 1. Setup and Run Instructions
 
