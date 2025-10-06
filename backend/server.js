@@ -13,7 +13,7 @@ app.use("/api/auth", authRoutes);
 app.use("/api/products", productRoutes);
 
 app.get("/", (req, res) => {
-  res.send("E-commerce API is running...");
+  res.send("micro-station API is running...");
 });
 
 const PORT = process.env.PORT || 5000;
