@@ -2,7 +2,7 @@
 
 This is a simple backend API built with **Node.js**, **Express**, and **Prisma ORM** that connects to a **PostgreSQL** database.
 It supposed to handles **user authentication** and **product management** features.
-but the time given was to small to complete the project.
+but the time given was to small to complete the project 100%.
 
 ---
 
@@ -10,7 +10,7 @@ but the time given was to small to complete the project.
 
 ### Prerequisites
 
-Before running the project, make sure you have installed:
+Before running the project, user/tester should make sure to have installed:
 
 - [Node.js](https://nodejs.org/) (v18 or above)
 - [PostgreSQL](https://www.postgresql.org/download/) database
